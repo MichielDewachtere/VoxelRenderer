@@ -1,9 +1,11 @@
 #ifndef VULKANRENDERER_VULKANRENDERER_H
 #define VULKANRENDERER_VULKANRENDERER_H
 
-#include <vulkan/vulkan.h>
+#include <memory>
 
-namespace md
+#include "Instance.h"
+
+namespace md_renderer
 {
 	class VulkanRenderer final
 	{
@@ -15,7 +17,7 @@ namespace md
 		void Shutdown();
 
 	private:
-		VkInstance instance = VK_NULL_HANDLE;
+		std::unique_ptr<Instance> m_pInstance;
 	};
 }
 

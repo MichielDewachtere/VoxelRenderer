@@ -5,10 +5,13 @@
 
 #include "Window.h"
 
-namespace md
+namespace md_renderer
 {
 	class VulkanRenderer;
+}
 
+namespace md_engine
+{
 	class Engine final
 	{
 	public:
@@ -21,7 +24,7 @@ namespace md
 
 	private:
 		std::unique_ptr<Window> m_pWindow{ nullptr };
-		VulkanRenderer* m_Renderer{ nullptr };
+		md_renderer::VulkanRenderer* m_Renderer{ nullptr };
 	};
 }
 

@@ -1,33 +1,20 @@
-#include "VulkanRenderer.h"
+#include "VulkanRenderer/VulkanRenderer.h"
 
-#include <iostream>
+#include "VulkanRenderer/Common.h"
 
-md::VulkanRenderer::VulkanRenderer()
+md_renderer::VulkanRenderer::VulkanRenderer()
+	: m_pInstance(std::make_unique<Instance>())
 {
-	std::cout << "Hello from Vulkan Renderer\n";
+    InitializeLogger();
+    g_logger->info("Hello from Vulkan Renderer");
 }
 
-void md::VulkanRenderer::Init()
+void md_renderer::VulkanRenderer::Init()
 {
-    VkApplicationInfo appInfo{};
-    appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
-    appInfo.pApplicationName = "Voxel Renderer";
-    appInfo.apiVersion = VK_API_VERSION_1_4; // 1.4 may not be available in loader yet
-
-    VkInstanceCreateInfo create{};
-    create.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
-    create.pApplicationInfo = &appInfo;
-
-    if (vkCreateInstance(&create, nullptr, &instance) != VK_SUCCESS)
-        std::cout << "Failed to create Vulkan instance!\n";
-    else
-        std::cout << "Successfully created Vulkan instance\n";
+	m_pInstance->Init();
 }
 
-void md::VulkanRenderer::Shutdown()
+void md_renderer::VulkanRenderer::Shutdown()
 {
-    if (instance)
-        vkDestroyInstance(instance, nullptr);
-
-    std::cout << "Successfully destroyed Vulkan instance\n";
+	m_pInstance->ShutDown();
 }

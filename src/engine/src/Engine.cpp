@@ -1,24 +1,28 @@
-#include "Engine.h"
+#include "Engine/Engine.h"
 
 #include <iostream>
 #include <SDL_log.h>
 
-#include <VulkanRenderer.h>
+#include <VulkanRenderer/VulkanRenderer.h>
 
-md::Engine::Engine()
+#include "Engine/Common.h"
+
+md_engine::Engine::Engine()
 	: m_pWindow(new Window())
-	, m_Renderer(new VulkanRenderer())
+	, m_Renderer(new md_renderer::VulkanRenderer())
 {
-	std::cout << "Hello from Engine\n";
+    InitializeLoggers();
+
+    g_logger->info("Hello from Engine");
 }
 
-void md::Engine::Init()
+void md_engine::Engine::Init()
 {
-	m_Renderer->Init();
-	m_pWindow->Init({});
+    m_pWindow->Init({});
+    m_Renderer->Init();
 }
 
-void md::Engine::Run()
+void md_engine::Engine::Run()
 {
 	bool doContinue = true;
 	while (doContinue)
@@ -38,7 +42,7 @@ void md::Engine::Run()
     }
 }
 
-void md::Engine::Shutdown()
+void md_engine::Engine::Shutdown()
 {
-	m_Renderer->Shutdown();
+    m_Renderer->Shutdown();
 }

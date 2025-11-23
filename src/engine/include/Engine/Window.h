@@ -6,7 +6,7 @@
 
 #include "SDLUtil.h"
 
-namespace md
+namespace md_engine
 {
     struct WindowData
     {
@@ -18,7 +18,7 @@ namespace md
     {
     public:
         explicit Window() = default;
-        ~Window() = default;
+        ~Window();
 
         void Init(const WindowData& data);
 

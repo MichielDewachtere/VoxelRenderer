@@ -1,7 +1,7 @@
 #ifndef ENGINE_CORE_RENDERER_H
 #define ENGINE_CORE_RENDERER_H
 
-namespace md
+namespace md_engine
 {
     class Renderer final
     {
