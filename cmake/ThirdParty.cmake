@@ -11,3 +11,7 @@ set( VMA_HEADERS "${VULKAN_SDK}/include/vma" )
 
 # GLM
 set (GLM_HEADERS "${VULKAN_SDK}/include/glm")
+
+# spdlog
+set (SPDLOG_LIBRARIES "${MD_THIRDPARTY}/spdlog/lib")
+set (SPDLOG_HEADERS "${MD_THIRDPARTY}/spdlog/include")

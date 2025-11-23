@@ -16,6 +16,9 @@ else ()
     message(FATAL_ERROR "VULKAN_SDK environment variable not set!")
 endif()
 
+# Find ThirdParty
+set (MD_THIRDPARTY "${CMAKE_CURRENT_SOURCE_DIR}/../../ThirdParty")
+
 # Setup all thirdparty includes
 set(THIRDPARTY "${CMAKE_SOURCE_DIR}/cmake/ThirdParty.cmake")
 include("${THIRDPARTY}")
@@ -27,7 +30,10 @@ if (MSVC)
         /W4        # Warning level 4
         /WX        # Treat warnings as errors
         /permissive-  # Stricter C++ conformance
+        /utf-8
     )
+      add_compile_options(/utf-8)
+
 else()
     add_compile_options(
         -Wall -Wextra -Wpedantic -Werror  # GCC / Clang

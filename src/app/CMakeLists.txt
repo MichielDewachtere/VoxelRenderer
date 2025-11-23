@@ -15,4 +15,5 @@ target_link_libraries(App PUBLIC
 target_include_directories(App PUBLIC
     ${SDL3_HEADERS}
     ${GLM_HEADERS}
+    ${SPDLOG_HEADERS}
 )
